@@ -40,6 +40,10 @@ cat("Pendiente de tendencia por decada:", round(pendiente, 5), "°C/decada\n")
 # Preparar columna de fecha
 dataset$Date <- as.Date(paste0(dataset$Year, "-01"), "%Y-%m-%d")
 
+
+# Constantes para la creación de imágenes
+graph_dpi <- 85 
+
 p <- ggplot(dataset, aes(x = Date, y = Mean)) +
   geom_line(color = "steelblue", linewidth = 0.5) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
@@ -56,7 +60,7 @@ p <- ggplot(dataset, aes(x = Date, y = Mean)) +
     hjust = 0, vjust = -0.5, color = "red", size = 3
   )
 
-ggsave("../resultados/anomalia_mensual.png", plot = p, width = 9, height = 5, dpi = 100)
+ggsave("../resultados/anomalia_mensual.png", plot = p, width = 9, height = 5, dpi = graph_dpi)
 
 cat("Grafico guardado en resultados/anomalia_mensual.png\n")
 
@@ -72,6 +76,6 @@ p2 <- ggplot(tendencia_decada, aes(x = Decada, y = Mean)) +
   ) +
   theme_minimal()
 
-ggsave("../resultados/tendencia_decadas.png", plot = p2, width = 9, height = 5, dpi = 100)
+ggsave("../resultados/tendencia_decadas.png", plot = p2, width = 9, height = 5, dpi = graph_dpi)
 
 cat("Grafico guardado en resultados/tendencia_decadas.png\n")
