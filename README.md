@@ -34,3 +34,33 @@ El proyecto se estructura de la siguiente manera:
 ├── resultados/     # Almacena los gráficos y reportes generados por el script.
 ├── .gitignore      # Archivo de exclusión de temporales y archivos del sistema.
 └── README.md       # Documentación general del proyecto (este archivo).
+```
+
+## 🛠️ Instrucciones de Ejecución
+
+El entorno de desarrollo y ejecución principal es **Google Colab** configurado con el motor nativo de R (`colab.to/r`). Para replicar el análisis de manera local o remota en el servidor, siga estrictamente los siguientes pasos:
+
+### 1. Preparación del Entorno y Repositorio
+Clone el repositorio central en su entorno de trabajo y acceda al directorio del proyecto:
+```bash
+git clone [https://github.com/ForTheLoveOfPointers/utn-gestion-climatica-scrum.git](https://github.com/ForTheLoveOfPointers/utn-gestion-climatica-scrum.git)
+cd utn-gestion-climatica-scrum
+```
+
+### 2. Suministro de Datos
+Asegúrese de que el dataset mensual (monthly.csv) descargado desde la fuente oficial esté ubicado en la carpeta de entrada de datos:
+
+Ruta requerida: datos/monthly.csv
+
+### 3. Ejecución del Análisis
+Desde la terminal de comandos, y desde dentro de la carpeta /scripts, invoque el intérprete de R para procesar el script principal:
+
+```bash
+Rscript scripts/analisis_clima.R
+```
+
+### 4. Verificación de Productos y Outputs
+Una vez finalizada la ejecución, el script imprimirá por consola las métricas clave (Promedio, Máximo, Mínimo y la Pendiente de tendencia por década). De forma simultánea, se exportarán automáticamente los siguientes archivos a la carpeta de salidas:
+
+* `resultados/anomalia_mensual.png`: Gráfico de línea temporal con la evolución de la anomalía y la línea de promedio global.
+* `resultados/tendencia_decadas.png`: Gráfico de barras que representa el promedio por década junto a su línea de tendencia calculada mediante el modelo de regresión lineal.
